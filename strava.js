@@ -84,20 +84,26 @@ async function getActivities() {
 }
 function getAllRidesData() {
     var mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
+    var activityType = document.getElementById('activityType').selectedOptions[0].value;
+    var activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
     if (mapStyle = "Heatmap") {
         opacity = 0.3;
     } else {
         opacity = 1;
     }
     console.log(`Opacity set to ${opacity}`)
-    var activityType = document.getElementById('mapStyle').selectedOptions[0].value;
+    
     for (let i = 0; i < activities.length; i++) {
-    if (mapStyle = "Heatmap") {
-        opacity = 0.3;
-    } else {
-        opacity = 1;
-    }
-        var coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs()
+        const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
+        const distance = Math.round(activities[i].distance / 100) / 10
+        const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
+        const dateString = activities[i].start_date_local;
+        const day = 
+        if (activityType = "No Commutes") {
+            activities[i].
+        } else {
+            opacity = 1;
+        }
         L.polyline(
             coordinates,
             {
@@ -107,6 +113,6 @@ function getAllRidesData() {
                 lineJoin:'round'
             }
 
-        ).addTo(map)
+        ).bindPopup(activities[i].name + " (" + typeName + ")" + "\nDistance: " + distance + "km\n").addTo(map)
     };
 }
