@@ -83,16 +83,21 @@ async function getActivities() {
     console.log(activities);
 }
 function getAllRidesData() {
-    
     var mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     if (mapStyle = "Heatmap") {
         opacity = 0.3;
     } else {
         opacity = 1;
     }
+    console.log(`Opacity set to ${opacity}`)
+    var activityType = document.getElementById('mapStyle').selectedOptions[0].value;
     for (let i = 0; i < activities.length; i++) {
-        polylines.push(activities[i].map.summary_polyline);
-        var coordinates = L.Polyline.fromEncoded(polylines).getLatLngs()
+    if (mapStyle = "Heatmap") {
+        opacity = 0.3;
+    } else {
+        opacity = 1;
+    }
+        var coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs()
         L.polyline(
             coordinates,
             {
