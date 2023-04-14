@@ -1,0 +1,7 @@
+Changelog:
+
+New name: "Trueno", New uppercase J, new 7, new weights including Italics and Outline variants for Bold, Extra Bold and Black weights.
+
+Trueno Round is a new variant, with Bold and Regular weights plus matching Italics.
+
+Changes made by by Jasper at Cannot Into Space Fonts.

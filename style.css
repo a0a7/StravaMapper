@@ -1,0 +1,86 @@
+@font-face {
+  font-family: Trueno;
+  src: url(assets/font/trueno_round.otf);
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    background: #161616;
+}
+
+body * {
+    font-family: "trueno";
+    font-size: 2vh;
+}
+
+form * {
+    margin: 0.5vh;
+    padding: 0.4vh;
+}
+
+form label {
+    font-weight: bold;
+    color: #F4F4F3;
+}
+
+input[type = number], button, select {
+    width: 12vw;
+    background-color: #F4F4F3;
+    border-width: 0.3vw;
+    border-radius: 0.2vw;
+    border-color: #F4F4F3;
+    border-style: solid;
+}
+
+input[type = date] {
+    width: 1.5vw;
+    background-color: #F4F4F3;
+    border-width: 0.3vw;
+    border-radius: 0.2vw;
+    border-color: #F4F4F3;
+    border-style: solid;
+}
+
+.connectButton {
+    display: inline-block;
+    border: none;
+    background: none;
+    width: 13vw;
+    margin: 0vw;
+    margin-bottom: 1.5vh;
+    
+}
+#picker {
+    border-width: 0.3vw;
+    border-radius: 0.2vw;
+    border-color: #F4F4F3;
+    border-style: solid;
+    background-color: #F4F4F3;
+}
+#statsSubmit {
+    margin-top: 1.5vh;
+    padding: 0.45vw;
+    background-color: #F4F4F3;
+    border-width: 0.3vw;
+    border-radius: 0.2vw;
+    border-color: #F4F4F3;
+    border-style: solid;
+}
+
+#map {
+    width: 100vw;
+    height: 90vh;
+}
+
+@media screen and (min-width: 800px) {
+    #map {
+        width: 85vw;
+        height: 100vh;
+        float: right;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+}
