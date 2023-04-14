@@ -75,7 +75,7 @@ async function getActivities() {
     for (let i = 0; i < pageCount ; i++) {
         const page = i + 1
         console.log(`Getting Page ${page}`)
-        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i}`;
+        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${page}`;
         const response = await fetch(activitiesLink);
         const activityData = await response.json();
         activities = activities.concat(activityData);
