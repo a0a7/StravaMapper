@@ -27,7 +27,7 @@ window.addEventListener("load", (event) => {
 // Redirect the user to the Strava authorization page
 function redirectToStravaAuth() {
   console.log('Starting Auth Sequence')
-  const redirectUri = 'https://levtus.github.io/stravamap';
+  const redirectUri = 'https://levtus.github.io/stravatrace';
   const responseType = 'code';
   const scope = 'read,activity:read';
   const authUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
