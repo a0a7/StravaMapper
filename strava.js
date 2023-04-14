@@ -1,7 +1,7 @@
 const clientId = '98135'
 const clientSecret = '250fb83eda23244fd4a165a4a8565f398a5e1e56';
 var code
-var allActivities
+var activities
 var userData
 var data
 var accessToken
@@ -18,7 +18,6 @@ window.addEventListener("load", (event) => {
   if (code) {
     console.log('Code Found on Load') 
     getAccessToken(code)
-    getActivities()
   } else {
     console.log('Code Not Present on Load') 
   }
@@ -70,30 +69,45 @@ async function getAccessToken(code) {
 }
 
 function getActivities() {
-    console.log(document.getElementById("displayCount").value)
-    for (let i = 0; i < 11; i++) {
-        if (document.getElementById("displayCount").value > ( i * 100)) {
-            const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i + 1}`
-            fetch(activitiesLink)
-            .then((allActivities) => {
-                return allActivities.json();
-            })
-            .then((activityData) => {
-                allActivities = activityData;
-            });          
-        }
+    const pages = parseInt(document.getElementById("displayCount").value);
+    const activities = [];
+    const pageCount = Math.ceil(displayCount / 100);
+    const promises = [];
+
+    for (let i = 0; i < pages; i++) {
+        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i + 1}`;
+        promises.push(fetch(activitiesLink).then(response => response.json()));
     }
+    Promise.all(promises).then(activityData => {
+        activityData.forEach(data => {
+            activities.push(...data);
+        });
+        console.log(activities);
+    });
 }
 
+async function getActivities() {
+    const displayCount = parseInt(document.getElementById("displayCount").value);
+    const totalRequests = Math.ceil(displayCount / 100);
+
+    for (let i = 0; i < pages; i++) {
+        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i + 1}`;
+        const response = await fetch(activitiesLink);
+        const activityData = await response.json();
+        activities = activities.concat(activityData);
+    }
+    console.log(activities);
+}
 function getAllRidesData() {
+    
     var mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     if (mapStyle = "Heatmap") {
         opacity = 0.3;
     } else {
         opacity = 1;
     }
-    for (let i = 0; i < allActivities.length; i++) {
-        polylines.push(allActivities[i].map.summary_polyline);
+    for (let i = 0; i < activities.length; i++) {
+        polylines.push(activities[i].map.summary_polyline);
         var coordinates = L.Polyline.fromEncoded(polylines).getLatLngs()
         L.polyline(
             coordinates,
