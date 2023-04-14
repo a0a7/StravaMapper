@@ -68,30 +68,14 @@ async function getAccessToken(code) {
   return accessToken;
 }
 
-function getActivities() {
-    const pages = parseInt(document.getElementById("displayCount").value);
-    const activities = [];
-    const pageCount = Math.ceil(displayCount / 100);
-    const promises = [];
-
-    for (let i = 0; i < pages; i++) {
-        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i + 1}`;
-        promises.push(fetch(activitiesLink).then(response => response.json()));
-    }
-    Promise.all(promises).then(activityData => {
-        activityData.forEach(data => {
-            activities.push(...data);
-        });
-        console.log(activities);
-    });
-}
-
 async function getActivities() {
     const displayCount = parseInt(document.getElementById("displayCount").value);
-    const totalRequests = Math.ceil(displayCount / 100);
+    const pageCount = Math.ceil(displayCount / 100);
 
-    for (let i = 0; i < pages; i++) {
-        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i + 1}`;
+    for (let i = 0; i < pageCount ; i++) {
+        const page = i + 1
+        console.log(`Getting Page ${page}`)
+        const activitiesLink = `https://www.strava.com/api/v3/athlete/activities?access_token=${accessToken}&per_page=100&page=${i}`;
         const response = await fetch(activitiesLink);
         const activityData = await response.json();
         activities = activities.concat(activityData);
