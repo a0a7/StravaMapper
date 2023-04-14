@@ -17,7 +17,6 @@ body * {
 
 form * {
     margin: 0.5vh;
-    padding: 0.4vh;
 }
 
 form label {
@@ -43,6 +42,12 @@ input[type = date] {
     border-style: solid;
 }
 
+button.conectButton img.connectButton {
+    padding: 0px;
+    border-width: 0px;
+    margin: 0px;
+    width: 0px;
+}
 .connectButton {
     display: inline-block;
     border: none;
@@ -50,7 +55,6 @@ input[type = date] {
     width: 13vw;
     margin: 0vw;
     margin-bottom: 1.5vh;
-    
 }
 #picker {
     border-width: 0.3vw;
