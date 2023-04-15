@@ -107,9 +107,14 @@ function getAllRidesData() {
                 opacity: opacity,
                 lineJoin:'round'
             }
-        ).bindPopup(activityName + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
-        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[${i}].openPopup()">${activities.length - i}</o><br>`
-        document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
+        ).bindPopup(`
+            <p class="activityTitle">${activityName} (${typeName})</p>
+            <p class="date">${formattedDate}</p>
+            <p>Distance: ${distance}km</p>
+            <p>Moving Time: ${movingTime}</p>
+            <a href=\"https://www.strava.com/activities/${activities[i].id}\" target="_blank">View on Strava</a>
+        `).addTo(traces)
+        document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
     };
     traces.addTo(map)
 }            

@@ -82,30 +82,31 @@ button.conectButton img.connectButton {
     height: 90vh;
 }    
 
-
 #activityListContainer {
     height: 20vh;
     width: 13.5vw;
     margin-top: 1vw;
     background-color: #1c1c1c;
     overflow-y: auto;
-    overflow-x: hidden;
     line-height: 15px;
 }
-#activityList {
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-#secondCollumn {
-    color: #F4F4F3;
-    font-size: 10px;
-    padding: 0px;
 
-}
-#firstCollumn {
+#activityListContainer * {
     color: #B9B9B8;
-    font-size: 6px;
+    font-size: 5px;
     padding: 0px;
+}
+
+p {
+    font-family: "Trueno";
+}
+
+.activityTitle {
+    font-weight: bold;
+}
+
+.date {
+    color: darkgrey;
 }
 
 @media screen and (min-width: 800px) {
