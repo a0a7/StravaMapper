@@ -46,7 +46,7 @@ input[type = date] {
     border-style: solid;
 }
 
-button.conectButton img.connectButton {
+img.connectButton {
     padding: 0px;
     border-width: 0px;
     margin: 0px;
@@ -60,6 +60,7 @@ button.conectButton img.connectButton {
     margin: 0vw;
     margin-bottom: 1.5vh;
 }
+
 #picker {
     border-width: 0.3vw;
     border-radius: 0.2vw;
@@ -93,7 +94,7 @@ button.conectButton img.connectButton {
 
 #activityListContainer * {
     color: #B9B9B8;
-    font-size: 5px;
+    font-size: 8px;
     padding: 0px;
 }
 

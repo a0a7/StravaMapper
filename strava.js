@@ -24,13 +24,17 @@ window.addEventListener("load", (event) => {
 });
 
 // Redirect the user to the Strava authorization page
-function redirectToStravaAuth() {
+function authenticate() {
   console.log('Starting Auth Sequence')
   const redirectUri = 'https://levtus.github.io/stravatrace';
   const responseType = 'code';
   const scope = 'read,activity:read';
   const authUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
   window.location.href = authUrl;
+}
+
+$("#connectButton").click(function () {
+    authenticate()
 }
 
 // Get the authorization code from the URL
@@ -82,16 +86,15 @@ async function getActivities() {
     console.log(activities);
 }
 
-function getAllRidesData() {
+function displayRides() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     const activityType = document.getElementById('activityType').selectedOptions[0].value;
     const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
-    if (mapStyle == "Heatmap") { opacity = 0.3; } else { opacity = 1; }
+    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
     for (let i = 0; i < activities.length; i++) {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
-        
         const distance = (Math.round(activities[i].distance / 100) / 10);
         const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
         const formattedDate = formatDate(activities[i].start_date_local);
@@ -103,21 +106,42 @@ function getAllRidesData() {
             coordinates,
             {
                 color: mapColor,
-                weight: 4,
+                weight: 6,
                 opacity: opacity,
                 lineJoin:'round'
             }
         ).bindPopup(`
-            <p class="activityTitle">${activityName} (${typeName})</p>
+            <p class="activityTitle">${activityName}</p>
             <p class="date">${formattedDate}</p>
-            <p>Distance: ${distance}km</p>
             <p>Moving Time: ${movingTime}</p>
+            <p>Distance: ${distance}km</p>
+
             <a href=\"https://www.strava.com/activities/${activities[i].id}\" target="_blank">View on Strava</a>
-        `).addTo(traces)
+        `).on('click', function(e) {
+            map.fitBounds(traces[i].getBounds());
+            traces[i].setStyle({
+                weight: 8,
+                color: '#e2eb02'
+            }); 
+        }).addTo(traces)
         document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
     };
     traces.addTo(map)
+    map.fitBounds(traces.getBounds());
 }            
+
+async function activities() {
+    await getActivities()
+    await displayRides()
+    console.log('Activities Mapped')
+}
+
+map.on('click', function(clickedOff) {
+    traces.setStyle({
+        weight: 5,
+        color: mapColor
+    }); 
+}
 
 function formatDate(notFormatted) {
     const date = new Date(notFormatted);
@@ -134,3 +158,5 @@ function formatTime(seconds) {
     time.setSeconds(time);
     return time.toISOString().substr(11, 8)
 }
+
+                          
