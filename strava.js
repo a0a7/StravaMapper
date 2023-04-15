@@ -84,10 +84,10 @@ async function getActivities() {
 }
 
 function getAllRidesData() {
+    let traces = [];
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     const activityType = document.getElementById('activityType').selectedOptions[0].value;
     const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
-    const traces = [];
     if (mapStyle == "Heatmap") { opacity = 0.3; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
@@ -109,8 +109,8 @@ function getAllRidesData() {
                 lineJoin:'round'
             }
         ).bindPopup(activityName + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
-        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[i].openPopup()">${i + 1}</o><br>`
-        document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[i].openPopup()">${activityName}</a><br>`
+        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[${i}].openPopup()">${i + 1}</o><br>`
+        document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
     };
     traces.addTo(map)
 }            
