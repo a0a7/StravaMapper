@@ -99,7 +99,7 @@ function getAllRidesData() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
-        
+        console.log(activityName)
         L.polyline(
             coordinates,
             {
@@ -111,8 +111,8 @@ function getAllRidesData() {
         ).bindPopup(activityName + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
         document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[${i}].openPopup()">${i + 1}</o><br>`
         document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
+        traces[i].addTo(map)
     };
-    traces.addTo(map)
 }            
 
 function formatDate(notFormatted) {
