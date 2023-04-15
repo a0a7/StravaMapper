@@ -82,23 +82,24 @@ async function getActivities() {
     }
     console.log(activities);
 }
+
 function getAllRidesData() {
-    var mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
-    var activityType = document.getElementById('activityType').selectedOptions[0].value;
-    var activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
-    if (mapStyle = "Heatmap") {
-        opacity = 0.3;
-    } else {
-        opacity = 1;
-    }
+    const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
+    const activityType = document.getElementById('activityType').selectedOptions[0].value;
+    const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
+    
+    if (mapStyle = "Heatmap") { opacity = 0.3; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
     for (let i = 0; i < activities.length; i++) {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
-        const distance = Math.round(activities[i].distance / 100) / 10
+        const distance = (Math.round(activities[i].distance / 100) / 10);
         const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
-        const dateString = activities[i].start_date_local;
-        const day = 
+        const formattedDate = formatDate(activities[i].start_date_local);
+        const elapsedTime = formatTime(activities[i].elapsed_time);
+        const movingTime = formatTime(activities[i].moving_time);
+        const activityName = activities[i].name;
+        
         if (activityType = "No Commutes") {
             activities[i].
         } else {
@@ -112,7 +113,25 @@ function getAllRidesData() {
                 opacity: opacity,
                 lineJoin:'round'
             }
-
-        ).bindPopup(activities[i].name + " (" + typeName + ")" + "\nDistance: " + distance + "km\n").addTo(map)
+        ).bindPopup( + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
+        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[i].openPopup()">${i + 1}</o><br>`
+        document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[i].openPopup()">${activityName}</a><br>`
     };
+    traces.addTo(map)
+}            
+
+function formatDate(notFormatted) {
+    const date = new Date(activities[i].start_date_local);
+    const formattedDate = date.toLocaleString("en-GB", {
+      year: "numeric",
+      month: "long",
+      day: "2-digit",
+      hour12: false,
+      timeZone: "UTC",
+    });
+}
+function formatTime(seconds) {
+    var time = new Date(seconds);
+    date.setSeconds(time);
+    return date.toISOString().substr(11, 8)
 }

@@ -2,12 +2,16 @@
   font-family: Trueno;
   src: url(assets/font/trueno_round.otf);
 }
-
-body, html {
+html {
+    width: 100%;
+    background: #161616;
+    margin: 0;
+}
+body {
     height: 100%;
     width: 100%;
-    margin: 0;
     background: #161616;
+    margin: 0;
 }
 
 body * {
@@ -34,7 +38,7 @@ input[type = number], button, select {
 }
 
 input[type = date] {
-    width: 1.5vw;
+    width: 24px;
     background-color: #F4F4F3;
     border-width: 0.3vw;
     border-radius: 0.2vw;
@@ -76,6 +80,32 @@ button.conectButton img.connectButton {
 #map {
     width: 100vw;
     height: 90vh;
+}    
+
+
+#activityListContainer {
+    height: 20vh;
+    width: 13.5vw;
+    margin-top: 1vw;
+    background-color: #1c1c1c;
+    overflow-y: auto;
+    overflow-x: hidden;
+    line-height: 15px;
+}
+#activityList {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+#secondCollumn {
+    color: #F4F4F3;
+    font-size: 10px;
+    padding: 0px;
+
+}
+#firstCollumn {
+    color: #B9B9B8;
+    font-size: 6px;
+    padding: 0px;
 }
 
 @media screen and (min-width: 800px) {
