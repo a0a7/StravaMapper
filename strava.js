@@ -87,7 +87,7 @@ function getAllRidesData() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     const activityType = document.getElementById('activityType').selectedOptions[0].value;
     const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
-    const traces[];
+    const traces = [];
     if (mapStyle == "Heatmap") { opacity = 0.3; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
