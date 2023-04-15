@@ -87,8 +87,8 @@ function getAllRidesData() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     const activityType = document.getElementById('activityType').selectedOptions[0].value;
     const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
-    
-    if (mapStyle = "Heatmap") { opacity = 0.3; } else { opacity = 1; }
+    const traces[];
+    if (mapStyle == "Heatmap") { opacity = 0.3; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
     for (let i = 0; i < activities.length; i++) {
@@ -100,11 +100,6 @@ function getAllRidesData() {
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         
-        if (activityType = "No Commutes") {
-            activities[i].
-        } else {
-            opacity = 1;
-        }
         L.polyline(
             coordinates,
             {
@@ -113,7 +108,7 @@ function getAllRidesData() {
                 opacity: opacity,
                 lineJoin:'round'
             }
-        ).bindPopup( + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
+        ).bindPopup(activityName + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
         document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[i].openPopup()">${i + 1}</o><br>`
         document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[i].openPopup()">${activityName}</a><br>`
     };
@@ -121,8 +116,8 @@ function getAllRidesData() {
 }            
 
 function formatDate(notFormatted) {
-    const date = new Date(activities[i].start_date_local);
-    const formattedDate = date.toLocaleString("en-GB", {
+    const date = new Date(notFormatted);
+    return date.toLocaleString("en-GB", {
       year: "numeric",
       month: "long",
       day: "2-digit",
@@ -131,7 +126,7 @@ function formatDate(notFormatted) {
     });
 }
 function formatTime(seconds) {
-    var time = new Date(seconds);
-    date.setSeconds(time);
-    return date.toISOString().substr(11, 8)
+    const time = new Date(seconds);
+    time.setSeconds(time);
+    return time.toISOString().substr(11, 8)
 }
