@@ -9,7 +9,7 @@ var startDate = 0;
 var endDate = (Date.now() / 1000 );
 var displayAmount
 var opacity = 1;
-var mapColor = "#000000"
+var mapColor = "#005694"
 
 const polylines = [];
 
@@ -71,7 +71,6 @@ async function getAccessToken(code) {
 async function getActivities() {
     const displayCount = parseInt(document.getElementById("displayCount").value);
     const pageCount = Math.ceil(displayCount / 100);
-
     for (let i = 0; i < pageCount ; i++) {
         const page = i + 1
         console.log(`Getting Page ${page}`)
@@ -84,7 +83,6 @@ async function getActivities() {
 }
 
 function getAllRidesData() {
-    let traces = [];
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     const activityType = document.getElementById('activityType').selectedOptions[0].value;
     const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
@@ -93,6 +91,7 @@ function getAllRidesData() {
     
     for (let i = 0; i < activities.length; i++) {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
+        
         const distance = (Math.round(activities[i].distance / 100) / 10);
         const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
         const formattedDate = formatDate(activities[i].start_date_local);
@@ -104,15 +103,15 @@ function getAllRidesData() {
             coordinates,
             {
                 color: mapColor,
-                weight: 2,
+                weight: 4,
                 opacity: opacity,
                 lineJoin:'round'
             }
         ).bindPopup(activityName + " (" + typeName + ")\n" + formattedDate + "\n\nDistance: " + distance + "km\n" + "Elapsed Time: " + elapsedTime  + "\nMoving Time: " + movingTime + `\n<a href=\"https://www.strava.com/activities/${activities[i].id}\">Open Link</a>`).addTo(traces)
-        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[${i}].openPopup()">${i + 1}</o><br>`
+        document.getElementById("firstCollumn").innerHTML = document.getElementById("firstCollumn").innerHTML + `<o onclick="traces[${i}].openPopup()">${activities.length - i}</o><br>`
         document.getElementById("secondCollumn").innerHTML = document.getElementById("secondCollumn").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
-        traces[i].addTo(map)
     };
+    traces.addTo(map)
 }            
 
 function formatDate(notFormatted) {
