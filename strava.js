@@ -35,7 +35,7 @@ function authenticate() {
 
 $("#connectButton").click(function () {
     authenticate()
-}
+})
 
 // Get the authorization code from the URL
 function getURLCode() {
