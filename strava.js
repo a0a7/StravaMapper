@@ -14,7 +14,7 @@ var mapColor = "#005694"
 const polylines = [];
 
 window.addEventListener("load", (event) => {
-  getAuthorizationCodeFromUrl() 
+     getURLCode()
   if (code) {
     console.log('Code Found on Load') 
     getAccessToken(code)
@@ -38,7 +38,7 @@ $("#connectButton").click(function () {
 }
 
 // Get the authorization code from the URL
-function getAuthorizationCodeFromUrl() {
+function getURLCode() {
     const urlParams = new URLSearchParams(window.location.search);
     code = urlParams.get('code');
     if (code) {
