@@ -95,7 +95,7 @@ function displayRides() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
     let firstActivityTimestamp = 0;
     let lastActivityTimestamp = 0;
-    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; };
+    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 0.9; };
     console.log(`Opacity set to ${opacity}`);
     
     for (let i = 0; i < activities.length; i++) {
@@ -114,7 +114,7 @@ function displayRides() {
                     coordinates,
                     {
                         color: mapColor,
-                        weight: 6,
+                        weight: 4,
                         opacity: opacity,
                         lineJoin:'round'
                     }
@@ -127,6 +127,14 @@ function displayRides() {
                     <a href=\"https://www.strava.com/activities/${activities[i].id}\" targe t="_blank">View on Strava</a>
                 `).on('click', function(e) {
                     var layer = e.target;
+                    traces.setstyle({
+                        color: mapColor,
+                        opacity: opacity,
+                        weight: 4
+                    });
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                    }                    
                     map.fitBounds(layer.getBounds());
                     layer.setStyle({
                         color: '#e2eb02',
@@ -137,8 +145,15 @@ function displayRides() {
                     var layer = e.target;
                     layer.setStyle({
                         color: '#e2eb02',
-                        opacity: 1,
+                        opacity: opacity,
                         weight: 8
+                    });
+                }).on('mouseout', function(e) {
+                    var layer = e.target;
+                    layer.setStyle({
+                        color: mapColor,
+                        opacity: opacity,
+                        weight: 4
                     });
                 }).addTo(traces)
                 document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
@@ -230,6 +245,3 @@ function matchActivityPurpose(activityNumber) {
         return true;
     }
 }
-
-
-
