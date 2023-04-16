@@ -196,7 +196,7 @@ function matchActivityType(activityNumber) {
             return false;
         }
     } else if (activityTypeFilter == "Skiing/Skating" ) {
-        if (realActivityType == "AlpineSki" || realActivityType == "BackcountrySki" || realActivityType == "NordicSki" realActivityType == "RollerSki" || realActivityType == "Snowboard" || realActivityType == "IceSkate" || realActivityType == "InlineSkate" || realActivityType == "Skateboard" || realActivityType == "Wheelchair" ) {
+        if ( realActivityType == "AlpineSki" || realActivityType == "BackcountrySki" || realActivityType == "NordicSki" || realActivityType == "RollerSki" || realActivityType == "Snowboard" || realActivityType == "IceSkate" || realActivityType == "InlineSkate" || realActivityType == "Skateboard" || realActivityType == "Wheelchair" ) {
             return true;
         } else {
             return false;
