@@ -106,6 +106,8 @@ function displayRides() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
+        eval("var window.trace" + i + " = []")
+        
         console.log(activityName)
         L.polyline(
             coordinates,
@@ -159,17 +161,6 @@ function formatTime(seconds) {
     const time = new Date(seconds);
     time.setSeconds(time);
     return time.toISOString().substr(11, 8)
-}
-
-function createTraceVars() {
-    if (typeof trace1 == 'undefined') {
-        for (let i = 0; i < 2501 ; i++) {
-            eval("var window.trace" + i + " = []")
-        }
-        console.log("Created vars trace0 - trace2500")
-    } else {
-        console.log('Determined that Vars trace0 - trace2500 already exist')
-    }
 }
 
 function removeParamFromURL() {
