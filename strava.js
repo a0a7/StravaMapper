@@ -208,15 +208,15 @@ function matchActivityType(activityNumber) {
             return false;
         }
     } else {
-        return true;
         console.log("Couldn't determine wanted activity type filter.")
+        return true;
     }
 }
 function matchActivityPurpose(activityNumber) {
     const activityPurposeFilter = document.getElementById('activityPurpose').selectedOptions[0].value;
     const isCommute = activities[activityNumber].commute;
 
-    if (activityPurpopseFilter == "All Activities") {
+    if (activityPurposeFilter == "All Activities") {
         return true;
     } else if (activityPurpopseFilter == "No Commutes") {
         if (isCommute == true) {
@@ -224,15 +224,15 @@ function matchActivityPurpose(activityNumber) {
         } else {
             return true;
         }
-    } else if (activityPurpopseFilter == "Only Commutes") {
+    } else if (activityPurposeFilter == "Only Commutes") {
         if (isCommute == true) {
             return true;
         } else {
             return false;
         } 
     } else {
-        return true;
         console.log("Couldn't determine wanted activity purpose filter.")
+        return true;
     }
 }
 
