@@ -141,7 +141,7 @@ map.on('click', function(clickedOff) {
         weight: 5,
         color: mapColor
     }); 
-}
+})
 
 function formatDate(notFormatted) {
     const date = new Date(notFormatted);
