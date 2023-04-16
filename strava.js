@@ -93,8 +93,6 @@ async function getActivities() {
 
 function displayRides() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
-    const activityType = document.getElementById('activityType').selectedOptions[0].value;
-    const activityPurpose = document.getElementById('activityPurpose').selectedOptions[0].value;
     if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
@@ -106,41 +104,45 @@ function displayRides() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
-        eval("trace" + i + " = []")        
         console.log(activityName)
-        L.polyline(
-            coordinates,
-            {
-                color: mapColor,
-                weight: 6,
-                opacity: opacity,
-                lineJoin:'round'
-            }
-        ).bindPopup(`
-            <p class="activityTitle">${activityName}</p>
-            <p class="date">${formattedDate}</p>
-            <p>Moving Time: ${movingTime}</p>
-            <p>Distance: ${distance}km</p>
+        
+        eval("trace" + i + " = []")        
+        
+        if (matchActivityPurpose(i) == true && matchActivityType(i) == true) {
+                L.polyline(
+                    coordinates,
+                    {
+                        color: mapColor,
+                        weight: 6,
+                        opacity: opacity,
+                        lineJoin:'round'
+                    }
+                ).bindPopup(`
+                    <p class="activityTitle">${activityName}</p>
+                    <p class="date">${formattedDate}</p>
+                    <p>Moving Time: ${movingTime}</p>
+                    <p>Distance: ${distance}km</p>
 
-            <a href=\"https://www.strava.com/activities/${activities[i].id}\" target="_blank">View on Strava</a>
-        `).on('click', function(e) {
-            var layer = e.target;
-            map.fitBounds(layer.getBounds());
-            layer.setStyle({
-                color: '#e2eb02',
-                opacity: 1,
-                weight: 8
-            });
-        }).on('mouseover', function(e) {
-            var layer = e.target;
-            layer.setStyle({
-                color: '#e2eb02',
-                opacity: 1,
-                weight: 8
-            });
-        }).addTo(this['trace' + i])
-        eval("trace" + i + ".addTo(traces)")
-        document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
+                    <a href=\"https://www.strava.com/activities/${activities[i].id}\" targe t="_blank">View on Strava</a>
+                `).on('click', function(e) {
+                    var layer = e.target;
+                    map.fitBounds(layer.getBounds());
+                    layer.setStyle({
+                        color: '#e2eb02',
+                        opacity: 1,
+                        weight: 8
+                    });
+                }).on('mouseover', function(e) {
+                    var layer = e.target;
+                    layer.setStyle({
+                        color: '#e2eb02',
+                        opacity: 1,
+                        weight: 8
+                    });
+                }).addTo(eval("trace" + i))
+                eval("trace" + i + ".addTo(traces)")
+                document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
+    }
     };
     traces.addTo(map)
     map.fitBounds(traces.getBounds());
@@ -169,4 +171,65 @@ function removeParamFromURL() {
   urlObj.searchParams.delete('scope');
   return urlObj.toString();
 }
+
+function matchActivityType(activityNumber) {
+    const activityTypeFilter = document.getElementById('activityType').selectedOptions[0].value;
+    const realActivityType = activities[activityNumber].type;
+
+    if (activityTypeFilter == "All Activities") {
+        return true;
+    } else if (activityTypeFilter == "Foot Sports)") {
+        if (realActivityType == "Run" || realActivityType == "Walk" || realActivityType == "Hike" ) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (activityTypeFilter == "Cycling") {
+        if (realActivityType == "Ride" || realActivityType == "EBikeRide" || realActivityType == "Handcycle" || realActivityType == "Velomobile" || ) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (activityTypeFilter == "Ski & Skate Sports" ) {
+        if (realActivityType == "AlpineSki" || realActivityType == "BackcountrySki" || realActivityType == "NordicSki" realActivityType == "RollerSki" || realActivityType == "Snowboard" || realActivityType == "IceSkate" || realActivityType == "InlineSkate" || realActivityType == "Skateboard" || realActivityType == "Wheelchair" ) {
+            return true;
+        } else {
+            return false;
+        }
+    } else if (activityTypeFilter == "Water Sports" ) {
+        if (realActivityType == "Canoeing" || realActivityType == "Kayaking" || realActivityType == "Kitesurf" || realActivityType == "Rowing" || realActivityType == "Sail" || realActivityType == "StandUpPaddling" || realActivityType == "Surfing" || realActivityType == "Swim" || realActivityType == "Windsurf" ) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return true;
+        console.log("Couldn't determine wanted activity type filter.")
+    }
+}
+function matchActivityPurpose(activityNumber) {
+    const activityPurposeFilter = document.getElementById('activityPurpose').selectedOptions[0].value;
+    const isCommute = activities[activityNumber].commute;
+
+    if (activityPurpopseFilter == "All Activities") {
+        return true;
+    } else if (activityPurpopseFilter == "No Commutes") {
+        if (isCommute == true) {
+            return false;
+        } else {
+            return true;
+        }
+    } else if (activityPurpopseFilter == "Only Commutes") {
+        if (isCommute == true) {
+            return true;
+        } else {
+            return false;
+        } 
+    } else {
+        return true;
+        console.log("Couldn't determine wanted activity purpose filter.")
+    }
+}
+
+
 
