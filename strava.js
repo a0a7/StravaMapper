@@ -14,7 +14,6 @@ var mapColor = "#005694"
 const polylines = [];
 
 window.addEventListener("load", (event) => {
-
     getURLCode()
     if (code) {
         console.log('Code Found on Load') 
@@ -163,12 +162,7 @@ function formatTime(seconds) {
 }
 
 function createTraceVars() {
-    if (typeof trace1 == 'undefined') {
-        for (let i = 0; i < 2501 ; i++) {
-            eval("var trace" + i + " = []")
-        }
-        console.log("Created vars trace0 - trace2500")
-    } else {
-        console.log('Determined that Vars trace0 - trace2500 already exist')
+    for (let i = 0; i < 2501 ; i++) {
+        eval("var trace" + i + " = []")
     }
 }
