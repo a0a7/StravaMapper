@@ -93,6 +93,8 @@ async function getActivities() {
 
 function displayRides() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
+    let firstActivityTimestamp = 0
+    let lastActivityTimestamp = 
     if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; }
     console.log(`Opacity set to ${opacity}`)
     
@@ -100,12 +102,15 @@ function displayRides() {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
         const distance = (Math.round(activities[i].distance / 100) / 10);
         const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
+        const epochDate = Date.parse(activities[i].start_date_local) / 100000
         const formattedDate = formatDate(activities[i].start_date_local);
+        
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         console.log(activityName)
-        
+        if (mapStyle == "Recency") { mapColor = }
+    
         eval("trace" + i + " = []")        
         
         if (matchActivityPurpose(i) == true && matchActivityType(i) == true) {
