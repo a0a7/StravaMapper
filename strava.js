@@ -142,7 +142,7 @@ function displayRides() {
                         opacity: 1,
                         weight: 8
                     });
-                }).addTo(eval(traces)
+                }).addTo(traces)
                 document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
     }
     };
