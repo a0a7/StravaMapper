@@ -2,6 +2,7 @@ const clientId = '98135';
 const clientSecret = '250fb83eda23244fd4a165a4a8565f398a5e1e56';
 var code;
 var activities = [];
+var traces = [];
 var userData
 var data
 var accessToken
@@ -109,10 +110,7 @@ function displayRides() {
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         console.log(activityName)
-        if (mapStyle == "Recency") { mapColor = blue; }
-    
-        eval("trace" + i + " = []")        
-        
+        let myVar = window[varName];
         if (matchActivityPurpose(i) == true && matchActivityType(i) == true) {
                 L.polyline(
                     coordinates,
@@ -144,8 +142,7 @@ function displayRides() {
                         opacity: 1,
                         weight: 8
                     });
-                }).addTo(eval("trace" + i))
-                eval("trace" + i + ".addTo(traces)")
+                }).addTo(eval(traces)
                 document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
     }
     };

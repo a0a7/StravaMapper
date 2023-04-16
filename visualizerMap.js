@@ -97,7 +97,6 @@ window.onload = function() {
     console.log('Reloading Map')
 };
 
-var traces = new L.FeatureGroup();
 
 map.on('click', function(clickedOff) {
     traces.setStyle({
