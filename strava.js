@@ -162,7 +162,21 @@ function formatTime(seconds) {
 }
 
 function createTraceVars() {
-    for (let i = 0; i < 2501 ; i++) {
-        eval("var trace" + i + " = []")
+    if (typeof trace1 == 'undefined') {
+        for (let i = 0; i < 2501 ; i++) {
+            eval("var window.trace" + i + " = []")
+        }
+        console.log("Created vars trace0 - trace2500")
+    } else {
+        console.log('Determined that Vars trace0 - trace2500 already exist')
     }
 }
+
+function removeParamFromURL() {
+  const urlObj = new URL(location); 
+  urlObj.searchParams.delete('state');
+  urlObj.searchParams.delete('code');
+  urlObj.searchParams.delete('scope');
+  return urlObj.toString();
+}
+
