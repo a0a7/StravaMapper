@@ -14,12 +14,7 @@ var mapColor = "#005694"
 const polylines = [];
 
 window.addEventListener("load", (event) => {
-    if (typeof trace1 == 'undefined') {
-        for (let i = 0; i < 2501 ; i++) {
-            eval("var trace" + i + " = []")
-        }
-        console.log("Created vars trace0 - trace2500")
-    }
+
     getURLCode()
     if (code) {
         console.log('Code Found on Load') 
@@ -129,11 +124,23 @@ function displayRides() {
 
             <a href=\"https://www.strava.com/activities/${activities[i].id}\" target="_blank">View on Strava</a>
         `).on('click', function(e) {
-            eval("map.fitBounds(trace" + i + ".getBounds());")
-            eval("trace" + i + ".setStyle({weight: 8, color: '#e2eb02'});" );
+            var layer = e.target;
+            map.fitBounds(layer.getBounds());
+            layer.setStyle({
+                color: '#e2eb02',
+                opacity: 1,
+                weight: 8
+            });
+        }).on('mouseover', function(e) {
+            var layer = e.target;
+            layer.setStyle({
+                color: '#e2eb02',
+                opacity: 1,
+                weight: 8
+            });
         }).addTo(this['trace' + i])
         eval("trace" + i + ".addTo(traces)")
-        document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
+        document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
     };
     traces.addTo(map)
     map.fitBounds(traces.getBounds());
@@ -155,3 +162,13 @@ function formatTime(seconds) {
     return time.toISOString().substr(11, 8)
 }
 
+function createTraceVars() {
+    if (typeof trace1 == 'undefined') {
+        for (let i = 0; i < 2501 ; i++) {
+            eval("var trace" + i + " = []")
+        }
+        console.log("Created vars trace0 - trace2500")
+    } else {
+        console.log('Determined that Vars trace0 - trace2500 already exist')
+    }
+}

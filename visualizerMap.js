@@ -86,7 +86,7 @@ var overlayMaps = {
 };
 map.invalidateSize();
 
-Thunderforest_MobileAtlas.addTo(map);
+CartoDB_PositronNoLabels.addTo(map);
 
 L.control.scale().addTo(map);
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
