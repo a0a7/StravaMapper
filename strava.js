@@ -190,7 +190,7 @@ function matchActivityType(activityNumber) {
             return false;
         }
     } else if (activityTypeFilter == "Rides") {
-        if (realActivityType == "Ride" || realActivityType == "EBikeRide" || realActivityType == "Handcycle" || realActivityType == "Velomobile" || ) {
+        if (realActivityType == "Ride" || realActivityType == "EBikeRide" || realActivityType == "Handcycle" || realActivityType == "Velomobile" ) {
             return true;
         } else {
             return false;
