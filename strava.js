@@ -93,10 +93,10 @@ async function getActivities() {
 
 function displayRides() {
     const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
-    let firstActivityTimestamp = 0
-    let lastActivityTimestamp = 
-    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; }
-    console.log(`Opacity set to ${opacity}`)
+    let firstActivityTimestamp = 0;
+    let lastActivityTimestamp = 0;
+    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 1; };
+    console.log(`Opacity set to ${opacity}`);
     
     for (let i = 0; i < activities.length; i++) {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
