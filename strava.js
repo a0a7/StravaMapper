@@ -183,19 +183,19 @@ function matchActivityType(activityNumber) {
 
     if (activityTypeFilter == "All Activities") {
         return true;
-    } else if (activityTypeFilter == "Foot Sports)") {
+    } else if (activityTypeFilter == "Runs/Hikes/Walks)") {
         if (realActivityType == "Run" || realActivityType == "Walk" || realActivityType == "Hike" ) {
             return true;
         } else {
             return false;
         }
-    } else if (activityTypeFilter == "Cycling") {
+    } else if (activityTypeFilter == "Rides") {
         if (realActivityType == "Ride" || realActivityType == "EBikeRide" || realActivityType == "Handcycle" || realActivityType == "Velomobile" || ) {
             return true;
         } else {
             return false;
         }
-    } else if (activityTypeFilter == "Ski & Skate Sports" ) {
+    } else if (activityTypeFilter == "Skiing/Skating" ) {
         if (realActivityType == "AlpineSki" || realActivityType == "BackcountrySki" || realActivityType == "NordicSki" realActivityType == "RollerSki" || realActivityType == "Snowboard" || realActivityType == "IceSkate" || realActivityType == "InlineSkate" || realActivityType == "Skateboard" || realActivityType == "Wheelchair" ) {
             return true;
         } else {
