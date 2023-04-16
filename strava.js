@@ -109,7 +109,7 @@ function displayRides() {
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         console.log(activityName)
-        if (mapStyle == "Recency") { mapColor = }
+        if (mapStyle == "Recency") { mapColor = blue; }
     
         eval("trace" + i + " = []")        
         

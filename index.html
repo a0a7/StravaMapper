@@ -42,35 +42,40 @@
   <body>
     <form>
         <table>
-            <tr><td><button type="button"  class="connectButton" onclick="authenticate()"><img class="connectButton" src="assets/connectWithStrava.svg"></button></td></tr>
-            <tr><td><label>Activity Type:</label></td></tr>
-            <tr><td><select id="activityType">
+            <td><button type="button"  class="connectButton" onclick="authenticate()"><img class="connectButton" src="assets/connectWithStrava.svg"></button>
+            <tr class="left"><td><label>Activity Type:</label></td></tr>
+            <tr class="left"><td><select id="activityType">
                 <option>All Activities</option>
                 <option>Runs/Hikes/Walks</option>
                 <option>Rides</option>
                 <option>Skiing/Skating</option>
                 <option>Water Sports</option>
                 </select></td></tr>
-            <tr><td><label>Activity Purpose:</label></td></tr>
-            <tr><td><select id="activityPurpose">
+            <tr class="left"><td><label>Activity Purpose:</label></td></tr>
+            <tr class="left"><td><select id="activityPurpose">
                 <option>All Activities</option>
                 <option>No Commutes</option>
                 <option>Only Commutes</option>
                 </select></td></tr>
-            <tr><td><label># of Activities to display:</label></td></tr>
+            <tr class="left"><td><label>Max Activity Count:</label></td></tr>
                 <tr><td><input type="number" id="displayCount" min="100" max="2500" step="100" value="100"></td></tr>
-            <tr><td><label>Time Range:</label></td></tr>
-                <tr><td><input type="date">
-                    <label>-</label>
-                <input type="date"></td></tr>
-            <tr><td><label>Mapping Style:</label></td></tr>
-            <tr><td><select id="mapStyle">
+        </table>
+        <table class="rightTable">
+            <tr class="right"><td><label>Time Range:</label></td></tr>
+            <tr class="right">
+                <td><input type="date">
+                <label>-</label>
+                <input type="date"></td>
+            </tr>
+            <tr class="right"><td><label>Private Activities: </label><input type="checkbox" id="privateActivities"></td></tr>
+            <tr class="right"><td><label>Trace Style:</label></td></tr>
+            <tr class="right"><td><select id="mapStyle">
                 <option>Single Color</option>
                 <option>Heatmap</option>
                 <option>Recency</option>
                 </select></td></tr>
-            <tr><td><label>Trace Color:</label></td></tr>
-            <tr><td><button type='button' id="picker">Pick Color</button>
+            <tr class="right"><td><label>Trace Color:</label></td></tr>
+            <tr class="right"><td><button type='button' id="picker">Pick Color</button>
             <script>
                 $('#picker').colpick({
                     colorScheme:'dark',
@@ -96,9 +101,9 @@
                         $('#picker').colpickHide()
                 }});
                 </script></td></tr>
-            <tr><td><button type='button' id="statsSubmit" onclick="main()"><b>Trace Activities</b></button></td></tr>
-            <tr><td><div id="activityListContainer"></div></td></tr>
+            <tr class="right"><td><button type='button' id="statsSubmit" onclick="main()"><b>Trace Activities</b></button></td></tr>
         </table>
+        <div id="activityListContainer"></div>
       </form>
     <div id="map" onload="map.invalidateSize()"></div>
     <script src="visualizerMap.js"></script>

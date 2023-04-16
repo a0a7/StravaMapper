@@ -79,8 +79,12 @@ img.connectButton {
 }
 
 #map {
-    width: 100vw;
-    height: 90vh;
+    width: 85vw;
+    height: 100vh;
+    float: right;
+    position: fixed;
+    top: 0;
+    right: 0;
 }    
 
 #activityListContainer {
@@ -110,13 +114,63 @@ p {
     color: darkgrey;
 }
 
-@media screen and (min-width: 800px) {
-    #map {
-        width: 85vw;
-        height: 100vh;
-        float: right;
-        position: fixed;
+/* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
+@media screen and (max-width: 800px) {
+    body {
+        height: 100%;
+    }
+    body * {
+        font-size: 14px;
+    }
+    table {
+        width: 50%;
         top: 0;
-        right: 0;
+    }
+
+    .rightTable {
+        float: right;
+        position: absolute;
+        width: 48%;
+        right: 0px;
+        top: 1vh;
+    }
+    td {
+        width: 48%;
+    }
+    #map {
+        margin-top: auto;
+        width: 100vw;
+        height: 45vh;
+        float: none;
+        position: fixed;
+        display: flex;
+        bottom: 0vh;
+    }    
+    #activityListContainer {
+        margin-left: 0px;
+        width: 100vw;
+        height: 40vh;
+    }
+    .connectButton {
+        width: 45vw;
+        margin-bottom: 2vh;
+    }
+    
+    button, select {
+        width: 42vw;
+    }
+    input[type = number] {
+        width: 41vw;
+    }
+
+    input[type = date] {
+        width: 24px;
+    }
+    #statsSubmit {
+
+    }
+    #privateActivities {
+        width: 20px;
+        margin-left: 0px;
     }
 }
