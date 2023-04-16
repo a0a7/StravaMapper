@@ -23,6 +23,12 @@ window.addEventListener("load", (event) => {
   }
 });
 
+async function activities() {
+    await getActivities()
+    await displayRides()
+    console.log('Activities Mapped')
+}
+
 // Redirect the user to the Strava authorization page
 function authenticate() {
   console.log('Starting Auth Sequence')
@@ -129,12 +135,6 @@ function displayRides() {
     traces.addTo(map)
     map.fitBounds(traces.getBounds());
 }            
-
-async function activities() {
-    await getActivities()
-    await displayRides()
-    console.log('Activities Mapped')
-}
 
 function formatDate(notFormatted) {
     const date = new Date(notFormatted);

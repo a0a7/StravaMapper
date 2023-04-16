@@ -50,13 +50,13 @@ img.connectButton {
     padding: 0px;
     border-width: 0px;
     margin: 0px;
-    width: 0px;
 }
 .connectButton {
     display: inline-block;
     border: none;
     background: none;
     width: 13vw;
+    height: auto;
     margin: 0vw;
     margin-bottom: 1.5vh;
 }
