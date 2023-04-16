@@ -110,7 +110,6 @@ function displayRides() {
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         console.log(activityName)
-        let myVar = window[varName];
         if (matchActivityPurpose(i) == true && matchActivityType(i) == true) {
                 L.polyline(
                     coordinates,
