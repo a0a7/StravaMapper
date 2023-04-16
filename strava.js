@@ -14,19 +14,24 @@ var mapColor = "#005694"
 const polylines = [];
 
 window.addEventListener("load", (event) => {
-     getURLCode()
-  if (code) {
-    console.log('Code Found on Load') 
-    getAccessToken(code)
-  } else {
-    console.log('Code Not Present on Load') 
-  }
+    if (typeof trace1 == 'undefined') {
+        for (let i = 0; i < 2501 ; i++) {
+            eval("var trace" + i + " = []")
+        }
+        console.log("Created vars trace0 - trace2500")
+    }
+    getURLCode()
+    if (code) {
+        console.log('Code Found on Load') 
+        getAccessToken(code)
+    } else {
+        console.log('Code Not Present on Load') 
+    }
 });
 
 async function main() {
     await getActivities()
     await displayRides()
-    console.log('Activities Mapped')
 }
 
 // Redirect the user to the Strava authorization page
@@ -107,6 +112,7 @@ function displayRides() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
+        var trace.i 
         console.log(activityName)
         L.polyline(
             coordinates,
@@ -124,12 +130,10 @@ function displayRides() {
 
             <a href=\"https://www.strava.com/activities/${activities[i].id}\" target="_blank">View on Strava</a>
         `).on('click', function(e) {
-            map.fitBounds(traces[i].getBounds());
-            traces[i].setStyle({
-                weight: 8,
-                color: '#e2eb02'
-            }); 
-        }).addTo(traces)
+            eval("map.fitBounds(trace" + i + ".getBounds());")
+            eval("trace" + i + ".setStyle({weight: 8, color: '#e2eb02'});" );
+        }).addTo(eval("trace" + i))
+        eval("trace" + i + ".addTo(traces)")
         document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
     };
     traces.addTo(map)
@@ -152,4 +156,3 @@ function formatTime(seconds) {
     return time.toISOString().substr(11, 8)
 }
 
-                          
