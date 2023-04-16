@@ -23,7 +23,7 @@ window.addEventListener("load", (event) => {
   }
 });
 
-async function activities() {
+async function main() {
     await getActivities()
     await displayRides()
     console.log('Activities Mapped')
