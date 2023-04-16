@@ -112,7 +112,6 @@ function displayRides() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
-        var trace.i 
         console.log(activityName)
         L.polyline(
             coordinates,
