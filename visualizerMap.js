@@ -98,3 +98,10 @@ window.onload = function() {
 };
 
 var traces = new L.FeatureGroup();
+
+map.on('click', function(clickedOff) {
+    traces.setStyle({
+        weight: 5,
+        color: mapColor
+    }); 
+})

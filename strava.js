@@ -136,13 +136,6 @@ async function activities() {
     console.log('Activities Mapped')
 }
 
-map.on('click', function(clickedOff) {
-    traces.setStyle({
-        weight: 5,
-        color: mapColor
-    }); 
-})
-
 function formatDate(notFormatted) {
     const date = new Date(notFormatted);
     return date.toLocaleString("en-GB", {
