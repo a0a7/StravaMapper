@@ -131,7 +131,7 @@ function displayRides() {
         `).on('click', function(e) {
             eval("map.fitBounds(trace" + i + ".getBounds());")
             eval("trace" + i + ".setStyle({weight: 8, color: '#e2eb02'});" );
-        }).addTo(eval("trace" + i))
+        }).addTo(this['trace' + i])
         eval("trace" + i + ".addTo(traces)")
         document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="traces[${i}].openPopup()">${activityName}</a><br>`
     };
