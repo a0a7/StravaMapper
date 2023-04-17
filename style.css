@@ -107,7 +107,6 @@ img.connectButton {
 .activityListItem:hover {
     text-decoration: underline;
 }
-}
 
 p {
     font-family: "Trueno";
@@ -148,7 +147,7 @@ p {
 }
 
 /* Mobile Styles (Not mobile first because this isn't meant to have great mobile support.) */
-@media screen and (max-width: 810) {
+@media screen and (orientation: portrait) {
     body {
         height: 100%;
     }
