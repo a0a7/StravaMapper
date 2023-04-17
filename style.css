@@ -98,9 +98,15 @@ img.connectButton {
 }
 
 #activityListContainer * {
-    color: #B9B9B8;
-    font-size: 8px;
+    color: #E9E9E8;
+    font-size: 9px;
     padding: 0px;
+    text-decoration: none;
+}
+
+.activityListItem:hover {
+    text-decoration: underline;
+}
 }
 
 p {

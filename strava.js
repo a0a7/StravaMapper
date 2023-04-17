@@ -10,6 +10,9 @@ var endDate = (Date.now() / 1000 );
 var displayAmount
 var opacity = 0.9;
 var mapColor = "#005694"
+var activityPurpose = "All Activities";
+var activityType = "All Activities";
+var mapStyle = "Single Color"; 
 
 const polylines = [];
 
@@ -91,8 +94,9 @@ async function getActivities() {
     console.log(activities);
 }
 
+
+
 function displayRides() {
-    const mapStyle = document.getElementById('mapStyle').value;
     let firstActivityTimestamp = 0;
     let lastActivityTimestamp = 0;
     if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 0.9; };
@@ -159,7 +163,7 @@ function displayRides() {
                         weight: 4
                     });
                 }).addTo(traces)
-                document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a onclick="trace${i}.openPopup()">${i + 1}. ${activityName}</a><br>`
+                document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a class="activityListItem" href="https://www.strava.com/activities/${activities[i].id}" targe t="_blank"">${i + 1}. ${activityName}</a><br>`
     }
     };
     traces.addTo(map)
@@ -187,6 +191,7 @@ function removeParamFromURL() {
   urlObj.searchParams.delete('state');
   urlObj.searchParams.delete('code');
   urlObj.searchParams.delete('scope');
+  window.location.href = urlObj.toString();
   return urlObj.toString();
 }
 
