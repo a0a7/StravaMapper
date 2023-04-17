@@ -227,6 +227,8 @@ p {
     }
 }
 
-#hitcount {
+#hitCount {
+    visibility: hidden;
     display: none;
+    z-index: 99;
 }
