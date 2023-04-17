@@ -92,7 +92,7 @@ async function getActivities() {
 }
 
 function displayRides() {
-    const mapStyle = document.getElementById('mapStyle').selectedOptions[0].value;
+    const mapStyle = document.getElementById('mapStyle').value;
     let firstActivityTimestamp = 0;
     let lastActivityTimestamp = 0;
     if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 0.9; };
@@ -191,7 +191,7 @@ function removeParamFromURL() {
 }
 
 function matchActivityType(activityNumber) {
-    const activityTypeFilter = document.getElementById('activityType').selectedOptions[0].value;
+    const activityTypeFilter = document.getElementById('activityType').value;
     const realActivityType = activities[activityNumber].type;
 
     if (activityTypeFilter == "All Activities") {
@@ -226,7 +226,7 @@ function matchActivityType(activityNumber) {
     }
 }
 function matchActivityPurpose(activityNumber) {
-    const activityPurposeFilter = document.getElementById('activityPurpose').selectedOptions[0].value;
+    const activityPurposeFilter = document.getElementById('activityPurpose').value;
     const isCommute = activities[activityNumber].commute;
 
     if (activityPurposeFilter == "All Activities") {
