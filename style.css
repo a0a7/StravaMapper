@@ -227,3 +227,6 @@ p {
     }
 }
 
+#hitcount {
+    display: none;
+}

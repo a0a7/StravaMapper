@@ -255,3 +255,8 @@ function exportGPX() {
     saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
     console.log("Exported GPX")
 }
+
+function showViewCount() {
+    document.getElementById("hitcount").style.display = "inline"
+}
+}
