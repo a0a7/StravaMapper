@@ -9,10 +9,12 @@ var startDate = 0;
 var endDate = (Date.now() / 1000 );
 var displayAmount
 var opacity = 0.9;
-var mapColor = "#005694"
+var mapColor = "#3289c7"
 var activityPurpose = "All Activities";
 var activityType = "All Activities";
 var mapStyle = "Single Color"; 
+var wantedStartDate = 0;
+var wantedEndDate = 99999999999999;
 
 const polylines = [];
 
@@ -113,7 +115,7 @@ function displayRides() {
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
         console.log(activityName)
-        if (matchActivityPurpose(i) == true && matchActivityType(i) == true) {
+        if (matchActivityPurpose(i) == true && matchActivityType(i) == true && matchPrivStatus(i) == true && matchDateStatus(i) == true) {
                 L.polyline(
                     coordinates,
                     {
@@ -193,6 +195,41 @@ function removeParamFromURL() {
   urlObj.searchParams.delete('scope');
   window.location.href = urlObj.toString();
   return urlObj.toString();
+}
+
+function updateStartDate() {
+    wantedStartDate = new Date(document.getElementById('startDate').value).getTime();
+    console.log(`Updated Start Date to ${wantedStartDate}`)
+}
+
+function updateEndDate() {
+    wantedEndDate = new Date(document.getElementById('endDate').value).getTime();
+    console.log(`Updated Start Date to ${wantedEndDate}`)
+}
+
+function matchDateStatus(activityNumber) {
+    const activityDate = Date.parse(activities[activityNumber].start_date_local);
+    console.log(`Activity Timestamp ${activityDate}`)
+    if (activityDate > wantedStartDate  && activityDate < wantedEndDate) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function matchPrivStatus(activityNumber) {
+    const activityPrivateFilter = document.getElementById('privateActivities').checked;
+    const realActivitySetting = activities[activityNumber].private;
+    
+    if (realActivitySetting == activityPrivateFilter) {
+        return true;
+    } else if (realActivitySetting !== activityPrivateFilter) {
+        return false;
+    } else {
+        console.log("Could not determine wanted private status. Defaulting to showing them.")
+        return true;
+    }
+
 }
 
 function matchActivityType(activityNumber) {

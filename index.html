@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <title>Strava Tracer</title>
+    <title>Activity Tracer</title>
     <link rel="stylesheet" href="style.css" />
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
@@ -64,11 +64,11 @@
         <table class="rightTable">
             <tr class="right"><td><label>Time Range:</label></td></tr>
             <tr class="right">
-                <td><input type="date">
+                <td><input type="date" id="startDate" onchange="updateStartDate()">
                 <label>-</label>
-                <input type="date"></td>
+                <input type="date" id="endDate" onchange="updateEndDate()"></td>
             </tr>
-            <tr class="right"><td><label>Private Activities: </label><input type="checkbox" checked="true" id="privateActivities" ></td></tr>
+            <tr class="right"><td><label>Map Private Activities: </label><input type="checkbox" checked="true" id="privateActivities" ></td></tr>
             <tr class="right"><td><label>Trace Style:</label></td></tr>
             <tr class="right"><td><select id="mapStyle">
                 <option>Single Color</option>

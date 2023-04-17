@@ -28,6 +28,10 @@ form label {
     color: #F4F4F3;
 }
 
+button#picker {
+    background-color: #3289c7;
+    color: white;
+}
 input[type = number], button, select {
     width: 12vw;
     background-color: #F4F4F3;
