@@ -114,6 +114,18 @@ p {
     color: darkgrey;
 }
 
+#downloadLinks {
+    width: 8vw;
+    text-align: right;
+}
+.download {
+    color: #F4F4F3;
+    cursor: pointer;
+}
+.download:hover {
+    text-decoration: underline;
+}
+
 /* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
 @media screen and (max-width: 800px) {
     body {
@@ -174,3 +186,4 @@ p {
         margin-left: 0px;
     }
 }
+

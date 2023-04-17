@@ -90,7 +90,7 @@ CartoDB_PositronNoLabels.addTo(map);
 
 L.control.scale().addTo(map);
 var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
-L.control.bigImage({position: 'topleft', printControlLabel: '📷', title: 'Screenshot Map'}).addTo(map);
+L.control.bigImage({position: 'topleft', printControlLabel: '📷&#65038;', title: 'Screenshot Map'}).addTo(map);
 
 window.onload = function() {
      map.invalidateSize();

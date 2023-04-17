@@ -32,10 +32,11 @@
     <script src="libraries/colpick.js"></script>
     <link rel="stylesheet" href="libraries/colpick.css">
       
-    <!-- Date and Time Picker Plugin -->
-    <link rel="stylesheet" href="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.css" />
-    <script src="https://uicdn.toast.com/tui.date-picker/latest/tui-date-picker.js"></script>
-    
+    <!-- Coordinate Conversion (For Downloading) -->
+    <script src="libraries/leaflet-convertcoords.min.js"></script> 
+    <!-- Filesaver.js (For Downloading) -->
+    <script src="libraries/FileSaver.min.js"></script> 
+
     <!-- Strava JS -->
     <script src="strava.js"></script>
   </head>
@@ -107,6 +108,16 @@
       </form>
     <div id="map" onload="map.invalidateSize()"></div>
     <script src="visualizerMap.js"></script>
-    <img src="assets/compatibleWithStrava.svg" style="position: absolute; bottom: 0.5vh; left: 0px; width: 5vw;">
+    <table style="position: absolute; bottom: 0.5vh; left: 0px; id=bottom">
+        <tr>
+            <td>
+                <img src="assets/compatibleWithStrava.svg" style="width: 5vw;">
+            </td>
+            <td id="downloadLinks">
+                <a onclick="exportGPX()" class="download">&#x1f4e5;&#xfe0e; GPX</a><br>
+                <a onclick="exportKML()" class="download">&#x1f4e5;&#xfe0e; KML</a>
+            </td>
+        </tr>
+    </table>
   </body>
 </html>
