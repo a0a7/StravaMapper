@@ -108,10 +108,10 @@
       </form>
     <div id="map" onload="map.invalidateSize()"></div>
     <script src="visualizerMap.js"></script>
-    <table style="position: absolute; bottom: 0.5vh; left: 0px; id=bottom">
+    <table style="position: absolute; bottom: 0px; left: 0px; id=bottom">
         <tr>
-            <td>
-                <img src="assets/compatibleWithStrava.svg" style="width: 5vw;">
+            <td id="compatIcon">
+                <img src="assets/compatibleWithStrava.svg" id="stravaCompat">
             </td>
             <td id="downloadLinks">
                 <a onclick="exportGPX()" class="download">&#x1f4e5;&#xfe0e; GPX</a><br>

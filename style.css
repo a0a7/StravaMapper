@@ -59,6 +59,7 @@ img.connectButton {
     height: auto;
     margin: 0vw;
     margin-bottom: 1.5vh;
+    margin-top: 0.5vh;
 }
 
 #picker {
@@ -115,15 +116,23 @@ p {
 }
 
 #downloadLinks {
-    width: 8vw;
+    width: 7vw;
     text-align: right;
+    padding-bottom: 0.4vh;
 }
 .download {
+    vertical-align: top;
     color: #F4F4F3;
     cursor: pointer;
 }
 .download:hover {
     text-decoration: underline;
+}
+#stravaCompat {
+    vertical-align: bottom;
+    position: relative;
+    bottom: 0;
+    width: 6vw;
 }
 
 /* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
