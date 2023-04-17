@@ -108,14 +108,13 @@
       </form>
     <div id="map" onload="map.invalidateSize()"></div>
     <script src="visualizerMap.js"></script>
-    <table style="position: absolute; bottom: 0px; left: 0px; id=bottom">
+    <table id="footerTable">
         <tr>
             <td id="compatIcon">
                 <img src="assets/compatibleWithStrava.svg" id="stravaCompat">
-            </td>
-            <td id="downloadLinks">
+            </td></tr></table>
+            <table id="footerTable2"><tr><td id="downloadLinks">
                 <a onclick="exportGPX()" class="download">&#x1f4e5;&#xfe0e; GPX</a><br>
-                <a onclick="exportKML()" class="download">&#x1f4e5;&#xfe0e; KML</a>
             </td>
         </tr>
     </table>

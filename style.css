@@ -134,6 +134,12 @@ p {
     bottom: 0;
 }
 
+#footerTable {
+    position: absolute;
+    bottom: 0px; 
+    left: 0px;
+}
+
 /* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
 @media screen and (max-width: 800px) {
     body {
@@ -172,7 +178,7 @@ p {
         height: 40vh;
     }
     .connectButton {
-        width: 45vw;
+        width: 42vw;
         margin-bottom: 2vh;
     }
     
@@ -192,6 +198,30 @@ p {
     #privateActivities {
         width: 20px;
         margin-left: 0px;
+    }
+    #downloadLinks {
+        
+    }
+    
+    #footerTable {
+        right: 0;
+        top: 0;
+        position: fixed;
+        width: 12vw;
+        margin: auto;
+        margin-right: 0;
+    }
+    #footerTable2 {
+        top: 51vh;
+        right: 0.1vw; 
+        position: fixed;
+        width: 12vw;
+    }
+    img#stravaCompat {
+        width: 14vw;
+    }
+    #downloadLinks * {
+        font-size: 3vw;
     }
 }
 

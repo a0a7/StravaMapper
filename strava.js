@@ -255,12 +255,3 @@ function exportGPX() {
     saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
     console.log("Exported GPX")
 }
-
-function exportKML() {
-    const output = L.ConvertCoords.GPX.convert(traces, 500);
-    const fileName = "Strava Traces.kml";
-    saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
-    console.log("Exported KML")
-}
-
-
