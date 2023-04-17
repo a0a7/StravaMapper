@@ -116,9 +116,10 @@ p {
 }
 
 #downloadLinks {
-    width: 7vw;
+    position: absolute;
+    bottom: 0.8vh;
+    width: 14vw;
     text-align: right;
-    padding-bottom: 0.4vh;
 }
 .download {
     vertical-align: top;
@@ -129,7 +130,7 @@ p {
     text-decoration: underline;
 }
 #stravaCompat {
-    width: 6vw;
+    width: 4vw;
     position: relative;
     bottom: 0;
 }
@@ -140,8 +141,8 @@ p {
     left: 0px;
 }
 
-/* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
-@media screen and (max-width: 800px) {
+/* Mobile Styles (Not mobile first because this isn't meant to have great mobile support.) */
+@media screen and (max-width: 810) {
     body {
         height: 100%;
     }
@@ -199,10 +200,11 @@ p {
         width: 20px;
         margin-left: 0px;
     }
-    #downloadLinks {
+
+    a.download {
+        bottom: 0;
         
-    }
-    
+    }    
     #footerTable {
         right: 0;
         top: 0;
@@ -212,10 +214,10 @@ p {
         margin-right: 0;
     }
     #footerTable2 {
-        top: 51vh;
+        top: 55vh;
         right: 0.1vw; 
         position: fixed;
-        width: 12vw;
+        width: 16vw;
     }
     img#stravaCompat {
         width: 14vw;
