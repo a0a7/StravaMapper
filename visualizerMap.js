@@ -97,7 +97,7 @@ window.onload = function() {
     console.log('Reloading Map')
 };
 
-map.on(click: function() {
+map.on('click', function() {
     traces.setStyle({
         weight: 5,
         color: mapColor
