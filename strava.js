@@ -201,7 +201,7 @@ function matchActivityType(activityNumber) {
 
     if (activityTypeFilter == "All Activities") {
         return true;
-    } else if (activityTypeFilter == "Runs/Hikes/Walks)") {
+    } else if (activityTypeFilter == "Runs/Hikes/Walks") {
         if (realActivityType == "Run" || realActivityType == "Walk" || realActivityType == "Hike" ) {
             return true;
         } else {
