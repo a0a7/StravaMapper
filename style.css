@@ -129,10 +129,9 @@ p {
     text-decoration: underline;
 }
 #stravaCompat {
-    vertical-align: bottom;
+    width: 6vw;
     position: relative;
     bottom: 0;
-    width: 6vw;
 }
 
 /* Mobile Styles (Not mobile first because this isn't meant to have great mobile support. */
