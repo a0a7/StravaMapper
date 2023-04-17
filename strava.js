@@ -223,17 +223,16 @@ function matchPrivStatus(activityNumber) {
     const activityPrivateFilter = document.getElementById('privateActivities').checked;
     const realActivitySetting = activities[activityNumber].private;
     
-    if (realActivitySetting == activityPrivateFilter) {
+    if ( activityPrivateFilter == true) {
         console.log("Private Check Successful")
         return true;
-    } else if (realActivitySetting !== activityPrivateFilter) {
+    } else if ( realActivitySetting == false ) {
+        console.log("Private Check Successful")
+        return true;
+    } else {
         console.log("Private Check Failed")
         return false;
-    } else {
-        console.log("Could not determine wanted private status. Defaulting to showing them.")
-        return true;
     }
-
 }
 
 function matchActivityType(activityNumber) {
