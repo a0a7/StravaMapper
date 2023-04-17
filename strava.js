@@ -250,7 +250,7 @@ function matchActivityPurpose(activityNumber) {
 }
 
 function exportGPX() {
-    const output = L.ConvertCoords.GPX.convert(traces, 50);
+    const output = L.ConvertCoords.GPX.convert(traces, 0.001);
     const fileName = "Strava Traces.gpx";
     saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
     console.log("Exported GPX")
