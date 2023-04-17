@@ -8,7 +8,7 @@ var accessToken
 var startDate = 0;
 var endDate = (Date.now() / 1000 );
 var displayAmount
-var opacity = 1;
+var opacity = 0.9;
 var mapColor = "#005694"
 
 const polylines = [];
@@ -127,8 +127,8 @@ function displayRides() {
                     <a href=\"https://www.strava.com/activities/${activities[i].id}\" targe t="_blank">View on Strava</a>
                 `).on('click', function(e) {
                     var layer = e.target;
-                    traces.setstyle({
-                        color: mapColor,
+                    layer.setstyle({
+                        color: '#e2eb02',
                         opacity: opacity,
                         weight: 4
                     });
@@ -141,8 +141,11 @@ function displayRides() {
                         opacity: 1,
                         weight: 8
                     });
-                }).on('mouseover', function(e) {
+                }).on('mouseover', function(e) { 
                     var layer = e.target;
+                    if (!L.Browser.ie && !L.Browser.opera && !L.Browser.edge) {
+                        layer.bringToFront();
+                    }  
                     layer.setStyle({
                         color: '#e2eb02',
                         opacity: opacity,
@@ -247,14 +250,14 @@ function matchActivityPurpose(activityNumber) {
 }
 
 function exportGPX() {
-    const output = L.ConvertCoords.GPX.convert(traces, 1);
+    const output = L.ConvertCoords.GPX.convert(traces, 500);
     const fileName = "Strava Traces.gpx";
     saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
     console.log("Exported GPX")
 }
 
 function exportKML() {
-    const output = L.ConvertCoords.GPX.convert(traces, 1);
+    const output = L.ConvertCoords.GPX.convert(traces, 500);
     const fileName = "Strava Traces.kml";
     saveAs(new Blob([output], {type: "text/xml;charset=utf-8;"}), fileName);
     console.log("Exported KML")
