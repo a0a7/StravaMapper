@@ -114,8 +114,8 @@ function displayRides() {
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
-        console.log(activityName)
         if (matchActivityPurpose(i) == true && matchActivityType(i) == true && matchPrivStatus(i) == true && matchDateStatus(i) == true) {
+                console.log(activityName)
                 L.polyline(
                     coordinates,
                     {
@@ -211,8 +211,10 @@ function matchDateStatus(activityNumber) {
     const activityDate = Date.parse(activities[activityNumber].start_date_local);
     console.log(`Activity Timestamp ${activityDate}`)
     if (activityDate > wantedStartDate  && activityDate < wantedEndDate) {
+        console.log("Date Check Successful")
         return true;
     } else {
+        console.log("Date Check Failed")
         return false;
     }
 }
@@ -222,8 +224,10 @@ function matchPrivStatus(activityNumber) {
     const realActivitySetting = activities[activityNumber].private;
     
     if (realActivitySetting == activityPrivateFilter) {
+        console.log("Private Check Successful")
         return true;
     } else if (realActivitySetting !== activityPrivateFilter) {
+        console.log("Private Check Failed")
         return false;
     } else {
         console.log("Could not determine wanted private status. Defaulting to showing them.")
@@ -237,29 +241,38 @@ function matchActivityType(activityNumber) {
     const realActivityType = activities[activityNumber].type;
 
     if (activityTypeFilter == "All Activities") {
+        console.log("Activity Type Check Successful")
         return true;
     } else if (activityTypeFilter == "Runs/Hikes/Walks") {
         if (realActivityType == "Run" || realActivityType == "Walk" || realActivityType == "Hike" ) {
+            console.log("Activity Type Check Successful")
             return true;
         } else {
+            console.log("Activity Type Check Failed")
             return false;
         }
     } else if (activityTypeFilter == "Rides") {
         if (realActivityType == "Ride" || realActivityType == "EBikeRide" || realActivityType == "Handcycle" || realActivityType == "Velomobile" ) {
+            console.log("Activity Type Check Successful")
             return true;
         } else {
+            console.log("Activity Type Check Failed")
             return false;
         }
     } else if (activityTypeFilter == "Skiing/Skating" ) {
         if ( realActivityType == "AlpineSki" || realActivityType == "BackcountrySki" || realActivityType == "NordicSki" || realActivityType == "RollerSki" || realActivityType == "Snowboard" || realActivityType == "IceSkate" || realActivityType == "InlineSkate" || realActivityType == "Skateboard" || realActivityType == "Wheelchair" ) {
+            console.log("Activity Type Check Successful")
             return true;
         } else {
+            console.log("Activity Type Check Failed")
             return false;
         }
     } else if (activityTypeFilter == "Water Sports" ) {
         if (realActivityType == "Canoeing" || realActivityType == "Kayaking" || realActivityType == "Kitesurf" || realActivityType == "Rowing" || realActivityType == "Sail" || realActivityType == "StandUpPaddling" || realActivityType == "Surfing" || realActivityType == "Swim" || realActivityType == "Windsurf" ) {
+            console.log("Activity Type Check Successful")
             return true;
         } else {
+            console.log("Activity Type Check Failed")
             return false;
         }
     } else {
@@ -272,17 +285,22 @@ function matchActivityPurpose(activityNumber) {
     const isCommute = activities[activityNumber].commute;
 
     if (activityPurposeFilter == "All Activities") {
+        console.log("Commute Check Successful")
         return true;
     } else if (activityPurpopseFilter == "No Commutes") {
         if (isCommute == true) {
+            console.log("Commute Check Failed")
             return false;
         } else {
+            console.log("Commute Check Successful")
             return true;
         }
     } else if (activityPurposeFilter == "Only Commutes") {
         if (isCommute == true) {
+            console.log("Commute Check Successful")
             return true;
         } else {
+            console.log("Commute Check Failed")
             return false;
         } 
     } else {
