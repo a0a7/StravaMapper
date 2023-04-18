@@ -214,6 +214,11 @@ function updateEndDate() {
     console.log(`Updated Start Date to ${wantedEndDate}`)
 }
 
+function updateMapType() {
+    mapStyle = document.getElementById('mapStyle').value;
+    console.log(`Updated Map Type to ${mapStyle}`)
+}
+
 function matchDateStatus(activityNumber) {
     const activityDate = Date.parse(activities[activityNumber].start_date_local);
     console.log(`Activity Timestamp ${activityDate}`)

@@ -73,7 +73,7 @@
             </tr>
             <tr class="right"><td><label>Map Private Activities: </label><input type="checkbox" checked="true" id="privateActivities" ></td></tr>
             <tr class="right"><td><label>Trace Style:</label></td></tr>
-            <tr class="right"><td><select id="mapStyle">
+            <tr class="right"><td><select id="mapStyle" onchange="updateMapType()">>
                 <option>Single Color</option>
                 <option>Heatmap</option>
                 <option>Recency</option>
