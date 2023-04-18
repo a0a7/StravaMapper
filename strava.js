@@ -168,7 +168,7 @@ function displayRides() {
     }
     };
     if (mapStyle == "Heatmap") {
-        var heatmap = L.webGLHeatmap({size: 100; opacity: 0.5}); 
+        var heatmap = L.webGLHeatmap({size: 100, opacity: 0.5}); 
         heatmap.setData(traces)
         map.addLayer(heatmap);
         console.log("Created Heatmap")
