@@ -286,7 +286,7 @@ function matchActivityPurpose(activityNumber) {
     if (activityPurposeFilter == "All Activities") {
         console.log("Commute Check Successful")
         return true;
-    } else if (activityPurpopseFilter == "No Commutes") {
+    } else if (activityPurposeFilter == "No Commutes") {
         if (isCommute == true) {
             console.log("Commute Check Failed")
             return false;
