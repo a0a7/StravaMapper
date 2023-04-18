@@ -105,3 +105,9 @@ map.on('click', function() {
 })
 
 var traces = new L.FeatureGroup
+var divHeatmapLayer = new L.DivHeatmapLayer({
+    clickable: false,
+    radius: 100,
+    gradient: true or false, // Make solid blobs
+    color: '255,0,0' or '#FF0000'
+});
