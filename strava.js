@@ -172,7 +172,7 @@ function displayRides() {
         heatmap.setData(traces)
         map.addLayer(heatmap);
         console.log("Created Heatmap")
-        map.fitBounds(heatmap.getBounds());
+        map.fitBounds(traces.getBounds());
     } else {
         traces.addTo(map)
         map.fitBounds(traces.getBounds());
