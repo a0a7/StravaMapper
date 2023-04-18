@@ -16,6 +16,7 @@ var mapStyle = "Single Color";
 var wantedStartDate = 0;
 var wantedEndDate = 99999999999999;
 
+
 const polylines = [];
 
 window.addEventListener("load", (event) => {
@@ -101,8 +102,6 @@ async function getActivities() {
 function displayRides() {
     let firstActivityTimestamp = 0;
     let lastActivityTimestamp = 0;
-    if (mapStyle == "Heatmap") { opacity = 0.5; } else { opacity = 0.9; };
-    console.log(`Opacity set to ${opacity}`);
     
     for (let i = 0; i < activities.length; i++) {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
@@ -168,8 +167,16 @@ function displayRides() {
                 document.getElementById("activityListContainer").innerHTML = document.getElementById("activityListContainer").innerHTML + `<a class="activityListItem" href="https://www.strava.com/activities/${activities[i].id}" targe t="_blank"">${i + 1}. ${activityName}</a><br>`
     }
     };
-    traces.addTo(map)
-    map.fitBounds(traces.getBounds());
+    if (mapStyle == "Heatmap") {
+        var heatmap = L.webGLHeatmap({size: 100; opacity: 0.5}); 
+        heatmap.setData(traces)
+        map.addLayer(heatmap);
+        console.log("Created Heatmap")
+        map.fitBounds(heatmap.getBounds());
+    } else {
+        traces.addTo(map)
+        map.fitBounds(traces.getBounds());
+    }
 }            
 
 function formatDate(notFormatted) {
