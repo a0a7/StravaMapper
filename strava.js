@@ -230,6 +230,13 @@ function updateEndDate() {
 
 function updateMapType() {
     mapStyle = document.getElementById('mapStyle').value;
+    if (mapStyle == "Random Color") {
+        document.getElementById('picker').style.display = "none";
+        document.getElementById('traceColor').style.display = "none";
+    } else {
+        document.getElementById('picker').style.display = "table";
+        document.getElementById('traceColor').style.display = "table";
+    }
     console.log(`Updated Map Type to ${mapStyle}`)
 }
 
