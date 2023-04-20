@@ -1,4 +1,4 @@
-# Strava Tracer
+# Strava Activity Tracer
 This is a browser tool that uses the Strava API and the Leaflet.js library to map your Strava activities onto a highly customizeable map. You can use it at https://levtus.github.io/tracer/.
 
 ![image](https://user-images.githubusercontent.com/61996958/233391978-ede635ff-3591-4be6-b2ce-f3567ce8ccc1.png)
@@ -28,11 +28,12 @@ This is a browser tool that uses the Strava API and the Leaflet.js library to ma
 * Single Color (Solid)
 * Heatmap (High-Frequency areas more pronounced)
 * Recency (More recently visited areas more pronounced)
+* Random Color (Each trace is assigned a random color; not very useful)
 
 #### Trace Color ([Colpick.js](https://github.com/mrgrain/colpick)):
 * Any Hex color accepted
 * Built in mobile-friendly color picker
-
+* Ignored if Map Style is set to 'Random Color'
 ---
 
 #### Background Map:
