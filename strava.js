@@ -107,12 +107,26 @@ function displayRides() {
         const coordinates = L.Polyline.fromEncoded(activities[i].map.summary_polyline).getLatLngs();
         const distance = (Math.round(activities[i].distance / 100) / 10);
         const typeName = activities[i].sport_type.replace(/([a-z])([A-Z])/g, '$1 $2');
-        const epochDate = Date.parse(activities[i].start_date_local) / 100000
+        const epochDate = Date.parse(activities[i].start_date_local) / 1000
         const formattedDate = formatDate(activities[i].start_date_local);
         
         const elapsedTime = formatTime(activities[i].elapsed_time);
         const movingTime = formatTime(activities[i].moving_time);
         const activityName = activities[i].name;
+        
+        if (document.getElementById('mapStyle').value == "Recency") {
+            if ( i < 75 ) {
+                opacity = 1 - (i * 0.01)
+            } else {
+                opacity = 0.25
+            }
+        };
+        
+        if (document.getElementById('mapStyle').value == "Random Color") {
+            var randomColor = Math.floor(Math.random()*16777215).toString(16);
+            mapColor = "#" + randomColor;
+        };
+        
         if (matchActivityPurpose(i) == true && matchActivityType(i) == true && matchPrivStatus(i) == true && matchDateStatus(i) == true) {
                 console.log(activityName)
                 L.polyline(
