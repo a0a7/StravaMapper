@@ -172,6 +172,10 @@ function displayRides() {
                     });
                 }).on('mouseout', function(e) {
                     var layer = e.target;
+                    if (document.getElementById('mapStyle').value == "Random Color") {
+                        var randomColor = Math.floor(Math.random()*16777215).toString(16);
+                        mapColor = "#" + randomColor;
+                    };
                     layer.setStyle({
                         color: mapColor,
                         opacity: opacity,
