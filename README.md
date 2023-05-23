@@ -1,5 +1,5 @@
 # Strava Activity Tracer
-This is a browser tool that uses the Strava API and the Leaflet.js library to map your Strava activities onto a highly customizeable map. You can use it at https://levtus.github.io/tracer/.
+This is a mobile-friendly browser tool that uses the Strava API and the Leaflet.js library to map your Strava activities onto a highly customizeable map. You can use it at https://levtus.github.io/tracer/.
 
 ![image](https://user-images.githubusercontent.com/61996958/233391978-ede635ff-3591-4be6-b2ce-f3567ce8ccc1.png)
 
