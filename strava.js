@@ -37,7 +37,7 @@ async function main() {
 // Redirect the user to the Strava authorization page
 function authenticate() {
   console.log('Starting Auth Sequence')
-  const redirectUri = 'https://levtus.github.io/tracer';
+  const redirectUri = 'https://ridemap.tk/';
   const responseType = 'code';
   const scope = 'read,activity:read';
   const authUrl = `https://www.strava.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}&scope=${scope}`;
