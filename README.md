@@ -1,5 +1,5 @@
-# Strava Activity Tracer
-A mobile-friendly web application that uses the Strava API and Leaflet.jsto map all of a user's Strava activities onto a highly customizable map. Hosted at http://ridemap.tk/.
+# Aerobic Activity Tracer
+A mobile-friendly web application that uses the Leaflet.js library to map all of a user's Strava activities onto a highly customizable map. Hosted at http://ridemap.tk/.
 
 ![image](https://user-images.githubusercontent.com/61996958/233391978-ede635ff-3591-4be6-b2ce-f3567ce8ccc1.png)
 
