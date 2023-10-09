@@ -139,7 +139,7 @@ p {
     text-decoration: underline;
 }
 #stravaCompat {
-    width: 4vw;
+    width: 2vw;
     position: relative;
     bottom: 0;
 }
@@ -229,7 +229,7 @@ p {
         width: 16vw;
     }
     img#stravaCompat {
-        width: 14vw;
+        width: 4vw;
     }
     #downloadLinks * {
         font-size: 3vw;
