@@ -1,5 +1,3 @@
-const clientId = '98135';
-const clientSecret = '250fb83eda23244fd4a165a4a8565f398a5e1e56';
 var code;
 var activities = [];
 var userData
